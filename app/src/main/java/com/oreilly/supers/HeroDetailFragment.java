@@ -18,7 +18,9 @@ public class HeroDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        if (savedInstanceState != null) {
+            heroId = savedInstanceState.getLong("heroId");
+        }
         return inflater.inflate(R.layout.fragment_hero_detail, container, false);
     }
 
@@ -41,5 +43,11 @@ public class HeroDetailFragment extends Fragment {
             secretIdentity.setText(hero.getFirst() + " " + hero.getLast());
             picture.setImageResource(hero.getImage());
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putLong("heroId", heroId);
     }
 }
