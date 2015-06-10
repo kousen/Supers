@@ -6,7 +6,7 @@ public class Hero {
     private String last;
     private int image;
 
-    public static final Hero[] heroes = {
+    public static final Hero[] HEROES = {
             new Hero("Mr. Incredible", "Robert", "Parr", R.drawable.mr_incredible),
             new Hero("ElastiGirl", "Helen", "Parr", R.drawable.elastigirl),
             new Hero("Frozone", "Lucius", "Best", R.drawable.frozone),
