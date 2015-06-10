@@ -1,20 +1,28 @@
 package com.oreilly.supers;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity
+        implements HeroListFragment.HeroListListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        HeroDetailFragment fragment =
-                (HeroDetailFragment) getFragmentManager().findFragmentById(R.id.detail_fragment);
-        fragment.setHeroId(0);
+    @Override
+    public void itemClicked(long id) {
+        HeroDetailFragment fragment = new HeroDetailFragment();
+        fragment.setHeroId(id);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
     }
 
     @Override

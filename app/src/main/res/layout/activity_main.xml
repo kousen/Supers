@@ -13,12 +13,10 @@
         android:layout_width="0dp"
         android:layout_height="match_parent" />
 
-    <fragment
-        android:id="@+id/detail_fragment"
-        class="com.oreilly.supers.HeroDetailFragment"
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_weight="3"
         android:layout_width="0dp"
         android:layout_height="match_parent" />
-
 
 </LinearLayout>
