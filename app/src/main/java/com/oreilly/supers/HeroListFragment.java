@@ -1,7 +1,7 @@
 package com.oreilly.supers;
 
-import android.app.Activity;
 import android.app.ListFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,10 +40,12 @@ public class HeroListFragment extends ListFragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+
+
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        listener = (HeroListListener) activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        listener = (HeroListListener) context;
     }
 
     @Override

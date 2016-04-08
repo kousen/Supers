@@ -40,7 +40,7 @@ public class HeroDetailFragment extends Fragment {
 
             Hero hero = Hero.HEROES[(int) heroId];
             heroView.setText(hero.getName());
-            secretIdentity.setText(hero.getFirst() + " " + hero.getLast());
+            secretIdentity.setText(String.format("%s %s", hero.getFirst(), hero.getLast()));
             picture.setImageResource(hero.getImage());
         }
     }
