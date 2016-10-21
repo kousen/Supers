@@ -2,6 +2,8 @@ package com.oreilly.supers;
 
 import android.app.Activity;
 import android.app.ListFragment;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,20 +43,18 @@ public class HeroListFragment extends ListFragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    // Still need this for API < 23
-    @Override
+    @Override @SuppressWarnings("deprecation")
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        Log.v("ListFragment", "onAttach with activity=" + activity);
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) return;
         listener = (HeroListListener) activity;
     }
 
-    // Doesn't get called on API < 23
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        listener = (HeroListListener) context;
-//    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        listener = (HeroListListener) context;
+    }
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
